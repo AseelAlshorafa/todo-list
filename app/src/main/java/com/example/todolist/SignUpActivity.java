@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText name, password, email;
     Button register;
     TextView login;
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                     email.setError("Please enter email address");
                 }
                 if(flag){
-                    progressDialog = ProgressDialogGenerator.showLoadingDialog(SignUpActivity.this);
+//                    progressDialog = ProgressDialogGenerator.showLoadingDialog(SignUpActivity.this);
                     signUp(emailStr, passwordStr, nameStr);
                 }
 
@@ -85,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.hide();
+//                        progressDialog.hide();
                         if (task.isSuccessful()) {
                             Toast.makeText(SignUpActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -115,5 +115,13 @@ public class SignUpActivity extends AppCompatActivity {
             finish();
         }
     }
+
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//        if (progressDialog != null && progressDialog.isShowing()) {
+//            progressDialog.dismiss();
+//        }
+//    }
 
 }

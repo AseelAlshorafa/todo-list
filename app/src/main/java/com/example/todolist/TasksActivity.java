@@ -148,8 +148,6 @@ public class TasksActivity extends AppCompatActivity {
             }
         }
     );
-
-=======
   
         create.addTextChangedListener(new TextWatcher() {
 

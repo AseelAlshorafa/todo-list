@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView register;
     Button login;
     private FirebaseAuth mAuth;
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                     email.setError("Please enter email address");
                 }
                 if(flag){
-                    progressDialog = ProgressDialogGenerator.showLoadingDialog(LoginActivity.this);
+//                    progressDialog = ProgressDialogGenerator.showLoadingDialog(LoginActivity.this);
                     login(emailStr, passwordStr);
                 }
             }
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.hide();
+//                        progressDialog.hide();
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, CategoriesActivity.class);
@@ -99,5 +99,13 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
     }
+//
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//        if (progressDialog != null && progressDialog.isShowing()) {
+//            progressDialog.dismiss();
+//        }
+//    }
 
 }
