@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#673AB7"
+    android:background="@color/background"
     android:gravity="top"
-    android:orientation="vertical">
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".TasksActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal"
         android:weightSum="12">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#673AB7"
+            android:background="@android:color/transparent"
             android:paddingVertical="10dp"
-            android:src="@drawable/back_arrow" />
+            android:id="@+id/back"
+            android:layout_weight="1"
+            android:src="@drawable/back_arrow"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Logout"
+            android:id="@+id/logout"
+            android:text="@string/logout"
             android:layout_marginTop="12dp"
             android:textStyle="bold"
             android:textAlignment="center"/>
@@ -44,6 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="17dp"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="vertical">
 
         <EditText
@@ -53,6 +62,7 @@
             android:id="@+id/search"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
+            android:background="@drawable/rounded_edit_text"
             android:paddingHorizontal="15dp"
             android:paddingVertical="10dp"
             android:drawableLeft="@drawable/ic_search"
@@ -61,6 +71,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
+            android:clickable="true"
             android:layout_height="wrap_content">
 
             <TextView
@@ -83,21 +94,39 @@
                 android:text="Delete"/>
         </FrameLayout>
 
-
-
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Create new task here"
-            android:id="@+id/create"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="10dp"
-            android:drawableLeft="@drawable/ic_plus"
-            android:layout_gravity="top"
-            android:layout_marginBottom="35dp" />
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp">
+
+            <ImageButton
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_weight="0"
+                android:background="@drawable/rounded_edit_text"
+                android:paddingHorizontal="20dp"
+                android:src="@drawable/ic_plus"
+
+                />
+
+            <EditText
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Create new task here"
+                android:textColorHint="@color/white"
+                android:layout_weight="0"
+                android:paddingVertical="10dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@drawable/rounded_edit_text"
+                />
+        </LinearLayout>
+
+
 
 
         <ScrollView
@@ -107,6 +136,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView

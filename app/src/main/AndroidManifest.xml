@@ -9,13 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoList">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SingleTask"></activity>
+        <activity android:name=".TasksActivity" />
+        <activity android:name=".CategoriesActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+
+    </application>
 </manifest>
