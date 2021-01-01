@@ -97,7 +97,26 @@
                 android:paddingHorizontal="20dp"
                 android:src="@drawable/ic_plus"
 
+
                 />
+
+            <EditText
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create new task here"
+                android:layout_weight="0"
+                android:paddingVertical="10dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@drawable/rounded_edit_text"
+                />
+        </LinearLayout>
+
+
+
+
+
 
             <EditText
                 android:id="@+id/create"

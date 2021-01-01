@@ -41,6 +41,8 @@ public class TasksActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ImageButton add;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +55,8 @@ public class TasksActivity extends AppCompatActivity {
         create = findViewById(R.id.create);
         back = findViewById(R.id.back);
         logout = findViewById(R.id.logout);
-        add = findViewById(R.id.add);
 
+        add = findViewById(R.id.add);
         categoryId = getIntent().getStringExtra("categoryId");
 
         /* retrieve category name */
@@ -99,6 +101,7 @@ public class TasksActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) { }
         });
+
 
         /* create a new task */
         add.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +149,8 @@ public class TasksActivity extends AppCompatActivity {
         }
     );
 
+=======
+  
         create.addTextChangedListener(new TextWatcher() {
 
             DatabaseReference mRef;

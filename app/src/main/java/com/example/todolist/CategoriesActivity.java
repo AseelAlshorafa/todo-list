@@ -131,15 +131,36 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if( -1 != s.toString().indexOf("\n") ){
+
                     create.clearFocus();
                     Toast.makeText(CategoriesActivity.this, "Entered a new Line", Toast.LENGTH_SHORT).show();
                     create.setText("");
+
+                    String newCategory = create.getText().toString();
+                    newCategory = newCategory.substring(0,newCategory.length()-1);
+                    create.clearFocus();
+                    create.setText("");
+
                     // Hide KeyBoard
                     InputMethodManager imm = null;
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                         imm = (InputMethodManager) CategoriesActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                     }
                     imm.hideSoftInputFromWindow(create.getWindowToken(),0);
+
+=======
+
+                    Category category = new Category(newCategory);
+
+                    // add new category to firebase
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("users/"+uid+"/categories");
+                    String categoryId = mRef.push().getKey();
+                    category.setCategoryId(categoryId);
+                    mRef.child(categoryId).setValue(category);
+
+                    Toast.makeText(CategoriesActivity.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
