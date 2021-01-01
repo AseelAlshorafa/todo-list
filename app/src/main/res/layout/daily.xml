@@ -94,22 +94,37 @@
                 android:text="Delete"/>
         </FrameLayout>
 
-
-
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Create new task here"
-            android:id="@+id/create"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:background="@drawable/rounded_edit_text"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="10dp"
-            android:drawableLeft="@drawable/ic_plus"
-            android:layout_gravity="top"
-            android:layout_marginBottom="35dp" />
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp">
+
+            <ImageButton
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_weight="0"
+                android:background="@drawable/rounded_edit_text"
+                android:paddingHorizontal="20dp"
+                android:src="@drawable/ic_plus"
+
+                />
+
+            <EditText
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Create new task here"
+                android:textColorHint="@color/white"
+                android:layout_weight="0"
+                android:paddingVertical="10dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@drawable/rounded_edit_text"
+                />
+        </LinearLayout>
 
 
         <ScrollView

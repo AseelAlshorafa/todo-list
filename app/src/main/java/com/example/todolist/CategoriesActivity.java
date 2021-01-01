@@ -132,6 +132,10 @@ public class CategoriesActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if( -1 != s.toString().indexOf("\n") ){
 
+                    create.clearFocus();
+                    Toast.makeText(CategoriesActivity.this, "Entered a new Line", Toast.LENGTH_SHORT).show();
+                    create.setText("");
+
                     String newCategory = create.getText().toString();
                     newCategory = newCategory.substring(0,newCategory.length()-1);
                     create.clearFocus();
@@ -143,6 +147,8 @@ public class CategoriesActivity extends AppCompatActivity {
                         imm = (InputMethodManager) CategoriesActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                     }
                     imm.hideSoftInputFromWindow(create.getWindowToken(),0);
+
+=======
 
                     Category category = new Category(newCategory);
 

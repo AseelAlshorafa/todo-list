@@ -39,6 +39,9 @@ public class TasksActivity extends AppCompatActivity {
     String categoryId;
     ImageButton back;
     ProgressDialog progressDialog;
+    ImageButton add;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class TasksActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
         logout = findViewById(R.id.logout);
 
+        add = findViewById(R.id.add);
         categoryId = getIntent().getStringExtra("categoryId");
 
         /* retrieve category name */
@@ -98,7 +102,55 @@ public class TasksActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) { }
         });
 
-        /* create a new category */
+
+        /* create a new task */
+        add.setOnClickListener(new View.OnClickListener() {
+            DatabaseReference mRef;
+            @Override
+            public void onClick(View v) {
+                String newTask = create.getText().toString();
+                create.clearFocus();
+                create.setText("");
+                // Hide KeyBoard
+                InputMethodManager imm = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    imm = (InputMethodManager) TasksActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                }
+                imm.hideSoftInputFromWindow(create.getWindowToken(),0);
+
+                // Current Date
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                String dateAndTime = formatter.format(new Date());
+
+                Task task = new Task(categoryId, newTask, dateAndTime);
+
+                // add new task to firebase
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                mRef = FirebaseDatabase.getInstance().getReference("users/"+uid+"/tasks");
+                String taskId = mRef.push().getKey();
+                task.setTaskId(taskId);
+                mRef.child(taskId).setValue(task);
+
+                // update num of tasks for category
+                mRef = FirebaseDatabase.getInstance().getReference("users/"+uid+"/categories/"+categoryId+"/numOfTasks");
+                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int num = Integer.parseInt(snapshot.getValue().toString());
+                        mRef.setValue(num + 1);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
+
+                Toast.makeText(TasksActivity.this, "new task added successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
+    );
+
+=======
+  
         create.addTextChangedListener(new TextWatcher() {
 
             DatabaseReference mRef;

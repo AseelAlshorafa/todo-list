@@ -97,6 +97,7 @@
                 android:paddingHorizontal="20dp"
                 android:src="@drawable/ic_plus"
 
+
                 />
 
             <EditText
@@ -115,20 +116,21 @@
 
 
 
-<!--        <EditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Create new list here"-->
-<!--            android:id="@+id/create"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textColorHint="@color/white"-->
-<!--            android:background="@drawable/rounded_edit_text"-->
-<!--            android:paddingHorizontal="15dp"-->
-<!--            android:paddingVertical="10dp"-->
-<!--            android:drawableLeft="@drawable/ic_plus"-->
-<!--            android:layout_gravity="top"-->
-<!--            android:layout_marginBottom="50dp" />-->
 
+
+            <EditText
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Create new task here"
+                android:textColorHint="@color/white"
+                android:layout_weight="0"
+                android:paddingVertical="10dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@drawable/rounded_edit_text"
+                />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
